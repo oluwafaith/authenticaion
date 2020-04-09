@@ -48,6 +48,8 @@ if(isset($_SESSION['loggedin']) && !empty($_SESSION['loggedin'])){
 
 <p>
 
+<br>
+
 <?php
      
      if(isset($_SESSION['message']) && !empty($_SESSION['message'])){

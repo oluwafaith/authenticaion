@@ -14,6 +14,20 @@ echo "Time of login: " . date("d M Y h:i:sa");
     Welcome, <?php echo $_SESSION['fullname'] ?>, You are logged in as (<?php echo $_SESSION['role'] ?>), and your ID is <?php echo $_SESSION['loggedin'] ?>
 
 
+    <p>
+    your department is (<?php echo $_SESSION['department'] ?>),
+<?php echo $_SESSION['department'] ?>
+</p>
+<?php (getdate());
+echo "<br><br>";
+
+$mydate = getdate(date("U"));
+?>
+
+<p> Your Log in Time is:  <?php echo  $_SESSION['timein']?></p>
+
+<p> Your Log in date is: <?php echo  $_SESSION['Date']?></p>
+
 <h4>Create New Users<h4>
 
 <form action="processregister.php" method="post">

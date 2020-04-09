@@ -9,7 +9,7 @@ if(isset($_SESSION['loggedin']) && !empty($_SESSION['loggedin'])){
 
 ?>
 
-<h3>Register</h3>
+<h1>Register</h1>
    Welcome, please register here
      <form action="processregister.php" method="post">
     

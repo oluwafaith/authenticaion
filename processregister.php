@@ -38,7 +38,7 @@ $_SESSION['department'] = $department;
     }
       // name not to have numbers
        
-     if (!preg_match("/^[a-z]+$/", $firstname) || !preg_match("/^[a-z]+$/", $lastname)) {
+     if (!preg_match("/^[a-zA-Z]+$/", $firstname) || !preg_match("/^[a-zA-Z]+$/", $lastname)) {
     $_SESSION['error'] = "Name should not have numbers";
     header("location:register.php");
     die();

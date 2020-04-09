@@ -39,7 +39,20 @@ if($errorCount > 0){
                     $_SESSION['loggedin'] = $userObject->id;
                     $_SESSION['fullname'] = $userObject->firstname . " " . $userObject-> $lastname ;
                     $_SESSION['role'] = $userObject->designation;
+                    $_SESSION['department'] = $userObject->department;
                     
+
+                    //date and time
+                    (getdate());
+
+                    $mydate = getdate(date("U"));
+        
+                    $_SESSION['timein'] = "$mydate[hours]:$mydate[minutes]";
+                    $_SESSION['Date'] = "$mydate[weekday], $mydate[month] $mydate[mday] $mydate[year]";
+                    $dateTime = $_SESSION['Date'] ." ". $_SESSION['timein'];
+        
+                    file_put_contents("db/timein/".  $_SESSION['Email'] . ".json", json_encode($dateTime));
+
 
                     if($userObject->designation == 'Patients'){
                         header("Location: patients.php"); 
