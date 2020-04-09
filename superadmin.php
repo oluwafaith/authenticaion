@@ -15,7 +15,7 @@ echo "Time of login: " . date("d M Y h:i:sa");
 
 
     <p>
-    your department is (<?php echo $_SESSION['department'] ?>),
+    Your department is (<?php echo $_SESSION['department'] ?>),
 <?php echo $_SESSION['department'] ?>
 </p>
 <?php (getdate());
