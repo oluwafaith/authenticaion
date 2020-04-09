@@ -1,17 +1,22 @@
-<?php  session_start();
-include_once('lib/header.php');
-// session_start();
-if(isset($_SESSION['loggedin']) && !empty($_SESSION['loggedin'])){
-    header("Location: dashboard.php");
+<?php session_start();
+
+include_once('lib/header.php'); 
+
+if(!isset($_SESSION['loggedin'])){
+    header("Location: login.php");
 }
 
-
-
+echo "Time of login: " . date("d M Y h:i:sa");
 ?>
 
-<h3>Register</h3>
-   Welcome, please register here
-     <form action="processregister.php" method="post">
+<h3>You are logged in as an Admin</h3>
+    LoggedIn User ID: <?php echo $_SESSION['loggedin'] ?>
+    Welcome, <?php echo $_SESSION['fullname'] ?>, You are logged in as (<?php echo $_SESSION['role'] ?>), and your ID is <?php echo $_SESSION['loggedin'] ?>
+
+
+<h4>Create New Users<h4>
+
+<form action="processregister.php" method="post">
     
     <p>
      <?php
@@ -98,13 +103,7 @@ if(isset($_SESSION['loggedin']) && !empty($_SESSION['loggedin'])){
      }
         ?>
     >Patients</option>
-    <option 
-    <?php
-     if(isset($_SESSION['designation']) && $_SESSION['designation'] =='Super Admin'){
-        echo  "Selected";
-     }
-        ?>
-    >Super Admin</option>
+    
     </select>
      </p>
      <p>
@@ -119,13 +118,10 @@ if(isset($_SESSION['loggedin']) && !empty($_SESSION['loggedin'])){
      </p>
      
      <p>
-     <button type="submit">Register</button>
+     <button type="submit">CREATE</button>
      </p>
      </form>
   
   
-  
-     <?php
-include_once('lib/footer.php');
 
-?>
+    <?php include_once('lib/footer.php'); ?>

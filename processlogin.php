@@ -39,10 +39,15 @@ if($errorCount > 0){
                     $_SESSION['loggedin'] = $userObject->id;
                     $_SESSION['fullname'] = $userObject->firstname . " " . $userObject-> $lastname ;
                     $_SESSION['role'] = $userObject->designation;
+                    
+
                     if($userObject->designation == 'Patients'){
                         header("Location: patients.php"); 
-                    }else{
+                    }else if($userObject->designation == 'Medical Team (MT)'){
                         header("Location: medicalteam.php");
+                    }
+                    else{
+                        header("Location: superadmin.php");
                     }
 
                    
