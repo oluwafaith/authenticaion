@@ -1,6 +1,7 @@
-<?php
+<?php  session_start();
 include_once('lib/header.php');
-// session_start();
+require_once('function/alert.php');
+
 if(isset($_SESSION['loggedin']) && !empty($_SESSION['loggedin'])){
     header("Location: dashboard.php");
 }
@@ -10,6 +11,9 @@ if(isset($_SESSION['loggedin']) && !empty($_SESSION['loggedin'])){
 
 ?>
    <h3>Login</h3> 
+   <?php
+   message();
+   ?>
 
 
     <form action="processlogin.php" method="post">
@@ -52,8 +56,8 @@ if(isset($_SESSION['loggedin']) && !empty($_SESSION['loggedin'])){
 
 <?php
      
-     if(isset($_SESSION['message']) && !empty($_SESSION['message'])){
-         echo "<span style='color:green'>" .  $_SESSION['message'] . "</span>";
+     if(isset($_SESSION['error']) && !empty($_SESSION['error'])){
+         echo "<span style='color:green'>" .  $_SESSION['error'] . "</span>";
          session_destroy();
      }
      ?>

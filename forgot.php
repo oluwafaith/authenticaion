@@ -1,11 +1,20 @@
-<?php
-
+<?php session_start();
 include_once('lib/header.php');  ?>
 
 <h3>Forgot Password</h3>
 <p>Provide the email associated with your account</p>
 
 <form action="processforgot.php" method="post">
+<p>
+     <?php
+     
+     if(isset($_SESSION['error']) && !empty($_SESSION['error'])){
+         echo "<span style='color:red'>" .  $_SESSION['error'] . "</span>";
+        //  session_unset();
+         session_destroy();
+     }
+     ?>
+     </p>
 
 <p>
      <label>Email</label><br>
