@@ -1,5 +1,7 @@
-<?php session_start();
-include_once('lib/header.php');  ?>
+<?php 
+//session_start();
+include_once('lib/header.php'); 
+require_once('functions/alert.php'); ?>
 
 <h3>Forgot Password</h3>
 <p>Provide the email associated with your account</p>
@@ -7,12 +9,12 @@ include_once('lib/header.php');  ?>
 <form action="processforgot.php" method="post">
 <p>
      <?php
-     
-     if(isset($_SESSION['error']) && !empty($_SESSION['error'])){
-         echo "<span style='color:red'>" .  $_SESSION['error'] . "</span>";
-        //  session_unset();
-         session_destroy();
-     }
+      print_error(); print_message();
+    //  if(isset($_SESSION['error']) && !empty($_SESSION['error'])){
+    //      echo "<span style='color:red'>" .  $_SESSION['error'] . "</span>";
+    //     //  session_unset();
+    //      session_destroy();
+    //  }
      ?>
      </p>
 

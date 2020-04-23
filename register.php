@@ -1,5 +1,7 @@
-<?php  session_start();
+<?php 
+// session_start();
 include_once('lib/header.php');
+require_once('functions/alert.php');
 // session_start();
 if(isset($_SESSION['loggedin']) && !empty($_SESSION['loggedin'])){
     header("Location: dashboard.php");
@@ -15,12 +17,13 @@ if(isset($_SESSION['loggedin']) && !empty($_SESSION['loggedin'])){
     
     <p>
      <?php
+     print_alert();
      
-     if(isset($_SESSION['error']) && !empty($_SESSION['error'])){
-         echo "<span style='color:red'>" .  $_SESSION['error'] . "</span>";
-        //  session_unset();
-         session_destroy();
-     }
+   //   if(isset($_SESSION['error']) && !empty($_SESSION['error'])){
+   //       echo "<span style='color:red'>" .  $_SESSION['error'] . "</span>";
+   //      //  session_unset();
+   //       session_destroy();
+   //   }
      ?>
      </p>
      <p>

@@ -1,4 +1,6 @@
-<?php session_start();
+<?php 
+//session_start();
+require_once('functions/user.php');
 //collecting the data
 $errorCount = 0;
 
@@ -68,9 +70,9 @@ if (strlen($email) < 5) {
     }
 else{
     //count all users
-$allUsers = scandir("db/users");
+// $allUsers = scandir("db/users");
 
-$countAllUsers = count($allUsers);
+// $countAllUsers = count($allUsers);
 
 $newUserId = ($countAllUsers -1);
 
@@ -88,17 +90,21 @@ $newUserId = ($countAllUsers -1);
 'dateOfegistery' => $date
     ];
 
-    for($counter = 0; $counter < $countAllUsers; $counter++){
-        $currentUser = $allUsers[$counter];
-        if($currentUser == $email . ".json"){
-            $_SESSION["error"] = "RegistrationFailed, User already exists";
-            header("Location: register.php");
-            die();
-        }
-    }
+
+    $userExists = find_user($email);
+    // for($counter = 0; $counter < $countAllUsers; $counter++){
+    //     $currentUser = $allUsers[$counter];
+        // if($currentUser == $email . ".json"){
+        //     if(userExists){
+        //     $_SESSION["error"] = "RegistrationFailed, User already exists";
+        //     header("Location: register.php");
+        //     die();
+        // }
+    
     //save in database3
    
-file_put_contents("db/users/". $email .  ".json",json_encode($userObject));
+    save_user($userObject);
+// file_put_contents("db/users/". $email .  ".json",json_encode($userObject));
 $_SESSION["message"] = "Registration successful, you can now login " . $firstname;
 header("Location: login.php");
 

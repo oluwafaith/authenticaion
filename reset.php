@@ -1,10 +1,12 @@
-<?php session_start();
+<?php 
+//session_start();
 include_once('lib/header.php'); 
 
+require_once('functions/alert.php');
+require_once('functions/user.php');
 
 
-
-if(!$_SESSION['loggedin'] && !isset($_GET['token']) && !isset($_SESSION['token'])){
+if(is_user_LoggedIn() && !is_token_set()){
     $_SESSION["error"] = "You are not authorized to view this page";
     header("Location: login.php");
 }
@@ -16,17 +18,17 @@ if(!$_SESSION['loggedin'] && !isset($_GET['token']) && !isset($_SESSION['token']
 <form action="processreset.php" method="post">
 <p>
      <?php 
-     
-     if(isset($_SESSION['error']) && !empty($_SESSION['error'])){
-         echo "<span style='color:red'>" .  $_SESSION['error'] . "</span>";
-        //  session_unset();
-         session_destroy();
-     }
+     print_alert();
+    //  if(isset($_SESSION['error']) && !empty($_SESSION['error'])){
+    //      echo "<span style='color:red'>" .  $_SESSION['error'] . "</span>";
+    //     //  session_unset();
+    //      session_destroy();
+    //  }
      ?>
 </p>
 <p>
 <?php 
-if(!$_SESSION['loggedin']){?>
+if(!is_user_loggedIn()){?>
      <input 
      <?php
      if(isset($_SESSION['token'])){
@@ -40,7 +42,7 @@ if(!$_SESSION['loggedin']){?>
      
 <input
 <?php
-if(isset($_SESSION['token'])){
+if(is_token_set_in_session()){
     echo "value='" .$_SESSION['token'] . "'";
 }else{
     echo "value='" .$_GET['token'] . "'";

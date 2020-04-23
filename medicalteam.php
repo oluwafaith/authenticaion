@@ -1,6 +1,10 @@
-<?php session_start();
+<?php 
+//session_start();
+include_once('lib/header.php');
+require_once('functions/alert.php');
+require_once('functions/user.php');
 
-include_once('lib/header.php'); 
+ 
 
 if(!isset($_SESSION['loggedin'])){
     header("Location: login.php");
@@ -28,5 +32,20 @@ $mydate = getdate(date("U"));
 <p> Your Log in Time is:  <?php echo  $_SESSION['timein']?></p>
 
 <p> Your Log in date is: <?php echo  $_SESSION['Date']?></p>
+
+<p>appointments</p>
+
+<!-- <p><?php  echo $_SESSION['dateOfAppointment'] ?> </p>
+<p><?php echo $_SESSION['appointmentTime'] ?></p>
+<p><?php echo $_SESSION['dateOfAppointment']?></p>
+<p><?php echo $_SESSION['dateOfAppointment']?></p>
+<p><?php echo $_SESSION['dateOfAppointment'] ?></p> -->
+
+
+
+
+
+ 
+
 
     <?php include_once('lib/footer.php'); ?>
