@@ -19,28 +19,16 @@ if($errorCount > 0){
     set_alert('error', $session_error);
     header("Location:paybill.php");
 }else{
-    if(isset($_POST['paybill'])){
-        $firstname = $_POST['firstname'];
-        $lastname = $_POST['lastname'];
-        $email = $_POST['email'];
-        $amount = $_POST['amount'];
+    
+    
+// $curl = curl_init();
 
-
-        echo $firstname;
-        echo $lastname;
-        echo $email;
-        echo $amount;
-        
-    }
-    <?php
-$curl = curl_init();
-
-$customer_email = "user@example.com";
+$customer_email = $_POST['email'];;
 $amount = 3000;  
 $currency = "NGN";
 $txref = "rave-29933838"; // ensure you generate unique references per transaction.
-$PBFPubKey = "<YOUR PUBLIC KEY>"; // get your public key from the dashboard.
-$redirect_url = "https://your-website.com/urltoredirectto";
+$PBFPubKey = "FLWPUBK-f79ca4bc09954d01662b19cb7fe83231-X"; // get your public key from the dashboard.
+$redirect_url = "http://localhost/snh/success.php";
 $payment_plan = "pass the plan id"; // this is only required for recurring payments.
 
 
