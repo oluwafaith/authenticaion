@@ -21,13 +21,13 @@ if($errorCount > 0){
 }else{
     
     
-// $curl = curl_init();
+$curl = curl_init();
 
 $customer_email = $_POST['email'];;
 $amount = 3000;  
 $currency = "NGN";
-$txref = "rave-29933838"; // ensure you generate unique references per transaction.
-$PBFPubKey = "FLWPUBK-f79ca4bc09954d01662b19cb7fe83231-X"; // get your public key from the dashboard.
+$txref = "rave-29933838"; 
+$PBFPubKey = "FLWPUBK-f79ca4bc09954d01662b19cb7fe83231-X"; 
 $redirect_url = "http://localhost/snh/success.php";
 $payment_plan = "pass the plan id"; // this is only required for recurring payments.
 
